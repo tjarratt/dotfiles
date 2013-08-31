@@ -7,5 +7,9 @@ function git-stash-recent-commits($n) {
 }
 
 function gitdiff {
-  git diff | vim -R -
+  git diff | vim -R -;
+}
+
+function rebasei {
+  git rebase --interactive "$@";
 }
