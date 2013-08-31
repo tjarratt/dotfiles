@@ -5,3 +5,7 @@ function git-stash-recent-commits($n) {
     git stash save $git_last_stash_name
   }
 }
+
+function gitdiff {
+  git diff | vim -R -
+}
