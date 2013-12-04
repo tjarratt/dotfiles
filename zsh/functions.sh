@@ -13,6 +13,9 @@ function gitdiff {
 function rebasei {
   fact; git rebase --interactive "$@";
 }
+function rebaseroot {
+  git rebase --interactive --root $tip
+}
 
 # random facts
 alias fact="/usr/local/Cellar/elinks/0.11.7/bin/elinks -dump randomfunfacts.com | sed -n '/^| /p' | tr -d \|"
