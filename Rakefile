@@ -17,6 +17,7 @@ end
 
 task :default => DOTFILES
 task :default => '~/.zshrc'
+task :default => '~/.vimrc'
 
 desc '~/.emacs.d'
 task 'emacs.d' do
@@ -31,4 +32,9 @@ end
 desc '~/.zshrc'
 task '~/.zshrc' do
   sh "cp .zshrc #{ENV['HOME']}/.zshrc"
+end
+
+desc '~/.vimrc'
+task '~/.vimrc' do
+  sh "cp .vimrc #{ENV['HOME']}/.vimrc"
 end
