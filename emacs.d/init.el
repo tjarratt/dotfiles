@@ -39,7 +39,6 @@
                                  'rainbow-mode
                                  'full-ack
                                  ))
-
 (require 'starter-kit-elpa)
 (require 'cl)
 (require 'ffap)
