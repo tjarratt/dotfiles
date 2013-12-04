@@ -51,7 +51,6 @@
 (require 'c)
 (require 'ansi-term)
 (require 'random-string)
-(require 'cal)
 (require 'settings)
 (require 'ruby)
 (require 'irc)
