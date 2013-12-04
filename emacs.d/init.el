@@ -49,11 +49,10 @@
 (require 'bindings)
 (require 'js)
 (require 'c)
-(require 'autoinsert)
 (require 'ansi-term)
 (require 'random-string)
-(require 'cal) ;; what?
-(require 'settings) ;; hh?
+(require 'cal)
+(require 'settings)
 (require 'ruby)
 (require 'irc)
 
@@ -73,7 +72,7 @@
 (add-hook 'html-mode-hook (lambda () (rainbow-mode 1)))
 
 (setq visible-bell 'top-bottom)
-(setq nb-font-height 130)
+(setq font-height 130)
 
 ;; todo: break this out into a separate file
 (require 'deft)
