@@ -10,7 +10,7 @@
   (insert (chomp (shell-command-to-string "uuidgen"))))
 
 (defun ruby-compile (cmd)
-  "run compile with ruby syntax highlighting"
+  "compile with ruby syntax"
   (compile cmd 'ruby-compilation))
 
 (defun run-buffer ()
@@ -65,3 +65,5 @@
     (if errmesg (setq errmesg (chomp errmesg)))
     (message "%s" (or errmesg "Done"))
 ))
+
+(provide 'defuns)
