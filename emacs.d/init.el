@@ -52,7 +52,7 @@
 (require 'ansi-term)
 (require 'random-string)
 (require 'settings)
-(require 'ruby)
+(require 'tj-ruby)
 (require 'irc)
 
 (load custom-file 'noerror)
