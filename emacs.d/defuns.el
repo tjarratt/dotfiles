@@ -63,7 +63,28 @@
                       (set-buffer buffer)
                       (revert-buffer t t t))))))
     (if errmesg (setq errmesg (chomp errmesg)))
-    (message "%s" (or errmesg "Done"))
-))
+    (message "%s" (or errmesg "Done"))))
+
+(defun toggle-quotes ()
+  "Toggle single and double quotes"
+  (interactive)
+  (save-excursion
+    (let ((start (point))
+          (find-quote
+           '(lambda (search-forward)
+              (setq search-forward (string-equal search-forward "forward"))
+              (while (or
+                      (equal 'font-lock-string-face (face-at-point))
+                      (equal 'font-lock-variable-name-face (face-at-point)))
+                (if search-forward (forward-char) (backward-char)))
+              (if search-forward (backward-char) (forward-char))
+              (let ((char (following-char)))
+                (delete-char 1)
+                (if (eq ?\" char)
+                    (insert-char ?\' 1)
+                  (insert-char ?\" 1))))))
+      (funcall find-quote "backward")
+      (goto-char start)
+      (funcall find-quote "forward"))))
 
 (provide 'defuns)
