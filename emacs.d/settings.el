@@ -5,12 +5,6 @@
 ;; use inconsolata if it is available
 (defvar font-name "Inconsolata:style=Medium:size=18")
 
-(when (window-system)
-  (require 'color-theme)
-  (color-theme)
-  (when (not (null (font-info font-name)))
-    (add-to-list 'default-frame-alist `(font . ,font-name))))
-
 (setq whitespace-style '(lines-tail))
 
 (blink-cursor-mode nil)
