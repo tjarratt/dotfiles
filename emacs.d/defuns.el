@@ -31,7 +31,13 @@
   "run uniq on a region instead of an entire buffer"
   (save-excursion
     (let ((query-replace-highlight nil))
-    (replace-regexp "\\(^.*$\\)\n\\(\\1\n\\)+" "\\1\n" nil start end))))
+      (replace-regexp "\\(^.*$\\)\n\\(\\1\n\\)+" "\\1\n" nil start end))))
+
+(defun set-mark-and-goto-line (line)
+   "Set mark at current point and go to given line number"
+   (interactive "NLine: ")
+   (push-mark nil t nil)
+   (goto-line line))
 
 (defun findcode (search)
   "run findcode in another buffer"
