@@ -38,6 +38,7 @@
                                  'smex
                                  'rainbow-mode
                                  'full-ack
+                                 'go-mode
                                  ))
 (require 'starter-kit-elpa)
 (require 'cl)
