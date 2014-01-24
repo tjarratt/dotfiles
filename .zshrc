@@ -39,4 +39,4 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=/Users/tjarratt/.rvm/gems/ruby-1.9.3-p327/bin:/Users/tjarratt/.rvm/gems/ruby-1.9.3-p327@global/bin:/Users/tjarratt/.rvm/rubies/ruby-1.9.3-p327/bin:/Users/tjarratt/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/git/bin:/Users/tjarratt/.rvm/bin
 
-PATH=$PATH:$HOME/.rvm/bin:/usr/local/go/bin 
+PATH=$PATH:$HOME/.rvm/bin:/usr/local/go/bin:$HOME/go/bin
