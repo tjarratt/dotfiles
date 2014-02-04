@@ -19,6 +19,7 @@ task :default => DOTFILES
 task :default => '~/.zshrc'
 task :default => '~/.vimrc'
 task :default => '~/.gitconfig'
+task :default => '/usr/local/bin'
 
 desc '~/.emacs.d'
 task 'emacs.d' do
@@ -43,4 +44,11 @@ end
 desc '~/.gitconfig'
 task '~/.gitconfig' do
   sh "cp .gitconfig #{ENV['HOME']}/.gitconfig"
+end
+
+desc '/usr/local/bin'
+task '/usr/local/bin' do
+  Dir.glob(File.expand_path("__FILE__/../bin/*")).each do |file|
+    sh "cp #{file} /usr/local/bin"
+  end
 end

@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+puts "Are you sure? This is a destructive action"
+result = gets.strip.downcase
+
+unless result == "y" || result == "yes"
+  exit(1)
+end
+
+`git branch --merged | xargs git branch -d`

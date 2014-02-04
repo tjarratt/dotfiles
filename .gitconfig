@@ -2,6 +2,12 @@
 	name = Tim Jarratt
 	email = tjarratt@gmail.com
 [alias]
-	st = status
+	st = status -sb
 	ci = commit
 	co = checkout
+[help]
+	autocorrect = 1
+[push]
+	default = tracking
+[branch "master"]
+	rebase = true

@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+git rev-list --all | xargs git grep $1
