@@ -11,3 +11,9 @@
 	default = tracking
 [branch "master"]
 	rebase = true
+[color]
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = auto
+  branch = auto
