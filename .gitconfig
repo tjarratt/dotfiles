@@ -9,6 +9,8 @@
 	autocorrect = 1
 [push]
 	default = tracking
+[branch]
+  autosetuprebase = always
 [branch "master"]
 	rebase = true
 [color]
