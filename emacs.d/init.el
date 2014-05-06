@@ -54,6 +54,7 @@
 (require 'random-string)
 (require 'settings)
 (require 'tj-ruby)
+(require 'tj-go)
 (require 'irc)
 
 (load custom-file 'noerror)
