@@ -24,6 +24,12 @@
 
 (global-set-key (kbd "<f1>") 'activate-hacker-mode)
 (global-set-key (kbd "<f2>") 'deactivate-hacker-mode)
+(global-set-key (kbd "<f5>") 'turbo-mode)
+
+(defun turbo-mode ()
+  (interactive)
+  (message "TURBO MODE ACTIVATED")
+  (setq jumpBy 22))
 
 (defun inject_contents ()
   (interactive)
@@ -33,7 +39,6 @@
 
 (defun insert-next-piece ()
   (setq substr (substring (elt fileContents lineNumber) start (min (+ start jumpBy) (length (elt fileContents lineNumber)))))
-  (message substr)
   (insert substr)
 
   (setq start (+ start jumpBy))
