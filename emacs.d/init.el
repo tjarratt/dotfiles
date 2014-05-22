@@ -108,3 +108,5 @@
       (set-face-attribute 'default nil :height 180))))
 
 (setq shell-file-name "/bin/sh") ; zsh, compile and rvm don't play nice
+
+(setq auto-save-timeout 1)
