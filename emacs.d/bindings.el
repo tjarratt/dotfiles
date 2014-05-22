@@ -19,6 +19,7 @@
 (define-key tj-map (kbd "u b") 'update-buffers)
 (define-key tj-map (kbd "u u") 'new-uuid)
 
+(global-set-key (kbd "<f6>") 'next-error)
 (global-set-key (kbd "<f8>") 'kill-current-buffer)
 
 (global-set-key (kbd "s-<left>") 'git-time-machine-diff-backwards)
