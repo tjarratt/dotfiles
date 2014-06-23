@@ -9,4 +9,6 @@
   (interactive)
   (compile (concat "ginkgo " (file-name-directory (buffer-file-name)))))
 
+(define-key tj-map (kbd "r t") 'go-test)
+
 (provide 'tj-go)
