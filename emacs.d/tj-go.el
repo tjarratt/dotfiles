@@ -1,7 +1,6 @@
 (require 'go-mode)
 
 (setq gofmt-command "goimports")
-(add-to-list 'load-path "/home/you/goroot/misc/emacs/")
 (add-hook 'before-save-hook 'gofmt-before-save)
 
 ;; running tests
@@ -10,12 +9,12 @@
   (interactive)
   (compile (concat "ginkgo " (file-name-directory (buffer-file-name)))))
 
-
 ;; test toggling
 (eval-after-load 'find-file
   '(progn
-     (add-to-list cc-other-file-alist '(("_test.go"   (".go"))))
-     (add-to-list cc-other-file-alist '((".go"   ("_test.go"))))))
+     (add-to-list 'cc-other-file-alist '(".go" ("_test.go")))
+     (add-to-list 'cc-other-file-alist '("_test.go" (".go")))
+     ))
 
 (define-key tj-map (kbd "r t") 'go-test)
 (global-set-key (kbd "M-T") 'ff-find-other-file)
