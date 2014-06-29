@@ -9,6 +9,12 @@
   (interactive)
   (compile (concat "ginkgo " (file-name-directory (buffer-file-name)))))
 
+(defun go-unfocus ()
+  "Unfocuses tests for the current file"
+  (interactive)
+  (compile (concat "ginkgo unfocus " (file-name-directory (buffer-file-name))))
+  (update-buffers))
+
 ;; test toggling
 (eval-after-load 'find-file
   '(progn
@@ -17,6 +23,7 @@
      ))
 
 (define-key tj-map (kbd "r t") 'go-test)
+(define-key tj-map (kbd "u f") 'go-unfocus)
 (global-set-key (kbd "M-T") 'ff-find-other-file)
 
 (provide 'tj-go)
