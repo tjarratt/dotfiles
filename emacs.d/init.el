@@ -112,3 +112,10 @@
 (setq shell-file-name "/bin/sh") ; zsh, compile and rvm don't play nice
 
 (setq auto-save-timeout 1)
+
+;; add GOPATH/bin to PATH (emacs is rarely launched from a shell on OS X)
+;; an alternative to this would be to add PATH to /etc/launchd.conf
+;; for more info see https://stackoverflow.com/questions/8606954/path-and-exec-path-set-but-emacs-does-not-find-executable
+(setq path-from-shell (replace-regexp-in-string "[ \t\n]*$" "" (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'")))
+(setenv "PATH" path-from-shell)
+(setq exec-path (split-string path-from-shell path-separator))
