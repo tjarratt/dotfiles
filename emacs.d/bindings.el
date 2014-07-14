@@ -27,6 +27,7 @@
 (global-set-key (kbd "s-<right>") 'git-time-machine-diff-forwards)
 
 (global-set-key (kbd "C-x f") 'find-file-in-project)
+(global-set-key (kbd "M-T") 'ff-find-other-file)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (global-set-key (kbd "M-g") 'set-mark-and-goto-line)

@@ -1,16 +1,13 @@
 (require 'go-mode)
 
-(setq gofmt-command "goimports")
-(add-hook 'before-save-hook 'gofmt-before-save)
-
 ;; running tests
 (defun go-test ()
-  "Runs tests for package in current buffer"
+  "Runs ginkgo specs for the current buffer's file's package"
   (interactive)
   (compile (concat "ginkgo " (file-name-directory (buffer-file-name)))))
 
 (defun go-unfocus ()
-  "Unfocuses tests for the current file"
+  "Unfocuses ginkgo specs for the current file"
   (interactive)
   (compile (concat "ginkgo unfocus " (file-name-directory (buffer-file-name))))
   (update-buffers))
@@ -22,8 +19,34 @@
      (add-to-list 'cc-other-file-alist '("_test.go" (".go")))
      ))
 
-(define-key tj-map (kbd "r t") 'go-test)
-(define-key tj-map (kbd "u f") 'go-unfocus)
-(global-set-key (kbd "M-T") 'ff-find-other-file)
+;; keybindings
+(define-prefix-command 'tj-golang-prefix-map)
+(defvar tj-golang-mode-map (make-sparse-keymap)
+  "Bindings for tj-golang-mode")
+
+(define-key tj-golang-prefix-map (kbd "r t") 'go-test)
+(define-key tj-golang-prefix-map (kbd "u f") 'go-unfocus)
+
+(define-key tj-golang-mode-map (kbd "s-a") 'tj-golang-prefix-map)
+(define-key tj-golang-mode-map (kbd "s-j") 'tj-golang-prefix-map)
+(define-key tj-golang-mode-map (kbd "s-n") 'tj-golang-prefix-map)
+
+;; setup minor mode for before-save-hook and other goodies
+(define-minor-mode tj-golang-mode
+  "Minor mode for golang-specific behavior
+
+Commands:
+\\{tj-golang-mode-map}
+"
+  :init-value nil
+  :keymap tj-golang-mode-map
+  (make-local-variable 'hippie-expand-try-functions-list))
+
+;; setup before save hook when in go-mode
+(add-hook 'go-mode-hook
+          (lambda ()
+            (tj-golang-mode t)
+            (setq gofmt-command "goimports")
+            (add-hook 'before-save-hook 'gofmt-before-save)))
 
 (provide 'tj-go)
