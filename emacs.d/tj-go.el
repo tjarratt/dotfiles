@@ -26,10 +26,57 @@
 
 (define-key tj-golang-prefix-map (kbd "r t") 'go-test)
 (define-key tj-golang-prefix-map (kbd "u f") 'go-unfocus)
+(define-key tj-golang-prefix-map (kbd "p t") 'tj-golang-partial-test)
+(define-key tj-golang-prefix-map (kbd "f t") 'tj-golang-full-test)
 
 (define-key tj-golang-mode-map (kbd "s-a") 'tj-golang-prefix-map)
 (define-key tj-golang-mode-map (kbd "s-j") 'tj-golang-prefix-map)
 (define-key tj-golang-mode-map (kbd "s-n") 'tj-golang-prefix-map)
+
+;; marks the current ginkgo test under the cursor as focused
+(defun tj-golang-partial-test ()
+  "Only run the test currently under the cursor"
+  (interactive)
+  (save-excursion
+    (search-backward "It(")
+    (save-excursion
+      ;; unfocus all focused Its
+      (goto-line 0)
+      (replace-string "FIt(" "It(")
+
+      ;; mark all Its as pending
+      (goto-line 0)
+      (replace-string "It(" "XIt("))
+    (save-restriction
+      (narrow-to-current-line)
+      (beginning-of-line)
+      (replace-string "XIt(" "FIt(")))
+  (save-buffer)
+  (run-ginkgo-tests))
+
+;; removes any focus from the current testsuite
+(defun tj-golang-full-test ()
+  "Remove focused Its"
+  (interactive)
+  (save-excursion
+    (goto-line 0)
+    (replace-string "FIt(" "It(")
+    (goto-line 0)
+    (replace-string "XIt(" "It("))
+  (save-buffer)
+  (run-ginkgo-tests))
+
+;; runs the specs for the ginkgo package the current buffer belongs to
+(defun run-ginkgo-tests ()
+  "Runs ginkgo tests"
+  (interactive)
+  (when (buffer-file-name)
+    (save-buffer))
+  (let ((root (locate-dominating-file default-directory ".git"))
+        (package-name tj-package-for-current-file)
+        (cmd "cd %s; ginkgo -r %@"))
+    (compile (apply 'format cmd (list (root) (package-name))))))
+
 
 ;; setup minor mode for before-save-hook and other goodies
 (define-minor-mode tj-golang-mode

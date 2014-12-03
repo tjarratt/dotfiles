@@ -17,7 +17,11 @@
   "run a buffer from a file"
   (interactive)
   (compile (buffer-file-name))
-)
+  )
+
+(defun narrow-to-current-line ()
+  "Narrow the region to the current line"
+  (narrow-to-region (line-beginning-position) (line-end-position)))
 
 (defun kill-current-buffer ()
   "kill the active buffer"
