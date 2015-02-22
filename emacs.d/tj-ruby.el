@@ -21,17 +21,6 @@
      (add-to-list 'cc-other-file-alist '("\\.rb$" (".t")))
      (add-to-list 'cc-other-file-alist '("\\.t$" (".rb")))))
 
-(defun tj-ruby-completion (&optional arg)
-  (interactive "P")
-  (if (string-equal (current-word) "end")
-      nil
-    (hippie-expand arg)))
-
-(eval-after-load 'smart-tab
-  '(progn
-     (add-to-list 'smart-tab-completion-functions-alist
-                  '(ruby-mode . tj-ruby-completion))))
-
 ;; ruby-mode setup
 (add-hook 'ruby-mode-hook
           (lambda ()

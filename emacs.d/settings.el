@@ -108,19 +108,6 @@
 ; tab completion
 (setq completion-ignore-case t)
 (setq read-file-name-completion-ignore-case t)
-(require 'smart-tab)
-(global-smart-tab-mode 1)
-(setq hippie-expand-try-functions-list (list
-  'try-expand-dabbrev-visible
-  'try-expand-dabbrev
-  'try-expand-dabbrev-all-buffers
-  'try-expand-dabbrev-from-kill
-  'try-complete-file-name-partially
-  'try-complete-file-name
-))
-
-(setq smart-tab-using-hippie-expand t)
-(setq smart-tab-disabled-major-modes '(term-mode inf-ruby-mode org-mode eshell-mode))
 
 (defvar delete-trailing-whitespace-on-save t)
 (defun toggle-buffer-delete-trailing-whitespace ()

@@ -41,6 +41,8 @@
                                  'rainbow-mode
                                  'full-ack
                                  'go-mode
+                                 'cl-lib
+                                 'popup
                                  ))
 (require 'starter-kit-elpa)
 (require 'cl)
@@ -119,3 +121,7 @@
 (setq path-from-shell (replace-regexp-in-string "[ \t\n]*$" "" (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'")))
 (setenv "PATH" path-from-shell)
 (setq exec-path (split-string path-from-shell path-separator))
+
+;; add auto-complete mode for Go
+(require 'go-autocomplete)
+(require 'auto-complete-config)
