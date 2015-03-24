@@ -17,6 +17,18 @@ function rebaseroot {
   git rebase --interactive --root $tip
 }
 
+function git-cherry-pick-from-branch {
+  SHA=$(git rev-list --ancestry-path $(git merge-base master $1)...$1 | tail -1)
+
+  git co master
+  git cherry-pick $SHA
+
+  MSG=$(git log  --format=%B -n 1)
+  git reset HEAD~
+  git add .
+  git ci -m $MSG
+}
+
 # random facts
 alias fact="/usr/local/Cellar/elinks/0.11.7/bin/elinks -dump randomfunfacts.com | sed -n '/^| /p' | tr -d \|"
 alias fact="/usr/local/Cellar/elinks/0.11.7/bin/elinks -dump randomfunfacts.com | sed -n '/^| /p' | tr -d \|"
