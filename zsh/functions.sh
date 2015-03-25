@@ -27,6 +27,10 @@ function git-cherry-pick-from-branch {
   git reset HEAD~
   git add .
   git ci -m $MSG
+
+  git co $1
+  git rebase master
+  git co -
 }
 
 # random facts
