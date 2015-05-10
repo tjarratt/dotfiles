@@ -23,10 +23,9 @@ function git-cherry-pick-from-branch {
   git co master
   git cherry-pick $SHA
 
-  MSG=$(git log  --format=%B -n 1)
   git reset HEAD~
   git add .
-  git ci -m $MSG
+  git ci -C $SHA
 
   git co $1
   git rebase master
