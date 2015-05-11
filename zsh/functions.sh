@@ -25,7 +25,7 @@ function git-cherry-pick-from-branch {
 
   git reset HEAD~
   git add .
-  git ci -C $SHA
+  git ci -C $SHA --reset-author
 
   git co $1
   git rebase master
